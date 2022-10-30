@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BigHomework</string>
+    <string name="account_hint">学号/职工号</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="sign_up">注册</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="sure_password">确认密码</string>
+</resources>
