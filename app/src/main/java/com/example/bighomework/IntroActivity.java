@@ -21,6 +21,13 @@ public class IntroActivity extends AppCompatActivity {
         logo.animate().translationY(2000).setDuration(1000).setStartDelay(4000);
         anime.animate().translationY(1600).setDuration(1000).setStartDelay(4000);
 
-        //startActivity(new Intent(this,LoginActivity.class));
+        new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            startActivity(new Intent(this,LoginActivity.class));
+        }).start();
     }
 }
