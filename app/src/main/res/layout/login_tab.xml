@@ -9,6 +9,7 @@
         android:id="@+id/account"
 
         android:hint="@string/account_hint"
+        android:inputType="text"
 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -31,6 +32,7 @@
         android:id="@+id/password"
 
         android:hint="@string/password"
+        android:inputType="textPassword"
 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
