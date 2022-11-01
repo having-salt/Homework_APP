@@ -6,4 +6,13 @@
     <string name="sign_up">注册</string>
     <string name="forget_password">忘记密码</string>
     <string name="sure_password">确认密码</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

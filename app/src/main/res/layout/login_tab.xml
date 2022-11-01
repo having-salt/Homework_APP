@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/account"
+        android:id="@+id/login_account"
 
         android:hint="@string/account_hint"
         android:inputType="text"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         />
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/login_password"
 
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/account"
+        app:layout_constraintTop_toBottomOf="@+id/login_account"
         android:layout_marginTop="10dp"
         />
 
@@ -84,7 +84,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="@+id/login_password"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"/>
+        app:layout_constraintTop_toBottomOf="@+id/login_password"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
