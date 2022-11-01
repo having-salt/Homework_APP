@@ -19,4 +19,5 @@
     <string name="IP_services">IP服务</string>
     <string name="service_port">服务端口</string>
     <string name="IP_setting">IP设置</string>
+    <string name="user_photo">用户照片</string>
 </resources>
