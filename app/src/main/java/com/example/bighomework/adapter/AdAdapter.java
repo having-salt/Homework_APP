@@ -21,9 +21,6 @@ public class AdAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        if(position>=3){
-            position %= 3;
-        }
         switch (position){
             case 0:
                 return new AdFragment1();
@@ -37,7 +34,7 @@ public class AdAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        final int maxValue = 999999999;
+        final int maxValue = 3;
         return maxValue;
     }
 }
