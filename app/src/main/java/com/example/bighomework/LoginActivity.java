@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.bighomework.Service.LoginService;
+import com.example.bighomework.service.LoginService;
+import com.example.bighomework.student.StuMainActivity;
+import com.example.bighomework.teacher.TeaMainActivity;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     boolean isTea = new LoginService().isTeacher(account);
                     if(isTea){
-                        startActivity(new Intent(LoginActivity.this,TeaMainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, TeaMainActivity.class));
                     }else{
-                        startActivity(new Intent(LoginActivity.this,StuMainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, StuMainActivity.class));
                     }
                 } catch (RuntimeException e) {
                     accountET.setText("");
