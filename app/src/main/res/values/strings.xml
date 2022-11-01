@@ -15,4 +15,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="submit">提交</string>
+    <string name="IP_services">IP服务</string>
+    <string name="service_port">服务端口</string>
+    <string name="IP_setting">IP设置</string>
 </resources>
