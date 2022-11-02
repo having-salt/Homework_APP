@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@color/beige">
+
+    <ImageView
+        android:id="@+id/pic2"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ad2_pic"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Learn"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0.6"
+        android:layout_marginTop="10dp"
+        android:text="Learn"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/tomato"
+        android:textSize="40sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/pic2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pic2"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Everyday"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Everyday"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/unBlack"
+        android:textSize="40sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/pic2"
+        app:layout_constraintTop_toBottomOf="@id/Learn"
+        app:layout_constraintStart_toStartOf="@+id/Learn"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sentence"
+        android:lines="2"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="10dp"
+        android:text="If there is short cut to learning \nit also must be diligent"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/darkCyan"
+        android:textSize="12sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Everyday"
+        app:layout_constraintStart_toStartOf="@+id/Learn"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

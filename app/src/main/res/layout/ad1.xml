@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@color/lightCyan">
+
+    <ImageView
+        android:id="@+id/pic1"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ad1_pic"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Try"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0.6"
+        android:layout_marginTop="10dp"
+        android:text="Try"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif-light"
+            android:textColor="@color/olive"
+        android:textSize="40sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/pic1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pic1"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Everything"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Everything"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/lightCoral"
+        android:textSize="40sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/pic1"
+        app:layout_constraintTop_toBottomOf="@id/Try"
+        app:layout_constraintStart_toStartOf="@+id/Try"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sentence"
+        android:lines="2"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="10dp"
+        android:text="Better fail in the attempt \nthan succeed in the conservatism"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/darkCyan"
+        android:textSize="12sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Everything"
+        app:layout_constraintStart_toStartOf="@+id/Try"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

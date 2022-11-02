@@ -1,6 +1,6 @@
 package com.example.bighomework;
 
-import com.example.bighomework.Service.LoginService;
+import com.example.bighomework.service.LoginService;
 
 import org.junit.Assert;
 import org.junit.Test;

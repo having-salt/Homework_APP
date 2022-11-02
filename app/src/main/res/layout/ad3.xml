@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@color/navy">
+
+    <ImageView
+        android:id="@+id/pic3"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ad3_pic"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Achieve"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0.6"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:text="Achieve"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/gold"
+        android:textSize="40sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/pic3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pic3"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Everyone"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Everyone"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/whiteSmoke"
+        android:textSize="40sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/pic3"
+        app:layout_constraintTop_toBottomOf="@id/Achieve"
+        app:layout_constraintStart_toStartOf="@+id/Achieve"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sentence"
+        android:lines="3"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="10dp"
+        android:text="Don't aim for success if you want it \njust do what you love and believe in \nand it will come naturally"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/mintCream"
+        android:textSize="12sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Everyone"
+        app:layout_constraintStart_toStartOf="@+id/Achieve"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
