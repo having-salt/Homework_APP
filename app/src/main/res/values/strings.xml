@@ -20,4 +20,14 @@
     <string name="service_port">服务端口</string>
     <string name="IP_setting">IP设置</string>
     <string name="user_photo">用户照片</string>
+    <string name="sign">签到</string>
+    <string name="stu_find">查询成绩</string>
+    <string name="gpa">绩点查询</string>
+    <string name="setting">设置</string>
+    <string name="information">个人信息</string>
+    <string name="help">帮助</string>
+    <string name="out">登出</string>
+    <string name="tea_sign">发起签到</string>
+    <string name="edit">编辑成绩</string>
+    <string name="statistics">统计成绩</string>
 </resources>

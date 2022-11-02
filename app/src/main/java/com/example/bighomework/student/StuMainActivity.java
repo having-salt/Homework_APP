@@ -20,7 +20,7 @@ public class StuMainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_stu);
-        adVP = findViewById(R.id.ad_ViewPager);
+        adVP = findViewById(R.id.stu_ad_ViewPager);
         adVP.setAdapter(new AdAdapter(this));
 
     }
