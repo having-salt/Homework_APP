@@ -30,4 +30,5 @@
     <string name="tea_sign">发起签到</string>
     <string name="edit">编辑成绩</string>
     <string name="statistics">统计成绩</string>
+    <string name="help_info">帮助</string>
 </resources>
