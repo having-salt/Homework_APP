@@ -5,5 +5,237 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InformationSetActivity">
+    <ImageButton
+        android:id="@+id/return_button"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+
+        android:src="@drawable/arrow_return"
+        android:background="@color/pink"
+
+        android:scaleType="fitXY"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/information_title"
+
+        android:layout_width="416dp"
+        android:layout_height="40dp"
+
+        android:background="@color/pink"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+
+        android:paddingBottom="5dp"
+        android:text="@string/information"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+
+
+        app:layout_constraintStart_toEndOf="@+id/return_button"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/head_colon"
+
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="60dp"
+        android:paddingLeft="20dp"
+
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/head_colon"
+        android:textColor="@color/pink"
+
+
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@+id/return_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@id/chooseBT"
+        app:layout_constraintStart_toEndOf="@+id/head_colon" />
+
+    <Button
+        android:id="@+id/chooseBT"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/pink"
+        android:text="@string/choose_photo"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@id/input_name"
+        app:layout_constraintStart_toEndOf="@+id/head_colon"/>
+
+    <TextView
+        android:id="@+id/name_colon"
+
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="132dp"
+        android:paddingLeft="20dp"
+
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/name_colon"
+        android:textColor="@color/pink"
+
+
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@+id/return_button"
+        app:layout_constraintTop_toTopOf="@+id/head_colon" />
+
+    <EditText
+        android:id="@+id/input_name"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/edit_text_bg"
+        android:hint="@string/input_name"
+
+        android:inputType="text"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
+        android:textSize="20dp"
+
+        app:layout_constraintBottom_toBottomOf="@id/name_colon"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/name_colon"
+        app:layout_constraintTop_toTopOf="@id/name_colon"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <TextView
+        android:id="@+id/stu_or_tea_colon"
+
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="60dp"
+        android:paddingLeft="20dp"
+
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/stu_or_tea_colon"
+        android:textColor="@color/pink"
+
+
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@+id/return_button"
+        app:layout_constraintTop_toTopOf="@+id/name_colon" />
+
+    <RadioGroup
+        android:id="@+id/stu_or_tea_radio"
+        android:layout_width="126dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/stu_or_tea_colon"
+
+        app:layout_constraintTop_toTopOf="@+id/stu_or_tea_colon">
+
+        <RadioButton
+            android:id="@+id/stu_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/stu"
+            app:layout_constraintStart_toEndOf="@+id/stu_or_tea_colon"
+            app:layout_constraintTop_toTopOf="@+id/stu_or_tea_colon" />
+
+        <RadioButton
+            android:id="@+id/tea_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tea"
+            app:layout_constraintStart_toEndOf="@+id/stu_radio"
+            app:layout_constraintTop_toTopOf="@+id/stu_radio" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/sentence_colon"
+
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="60dp"
+        android:paddingLeft="20dp"
+
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/sentence_colon"
+        android:textColor="@color/pink"
+
+
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@+id/return_button"
+        app:layout_constraintTop_toTopOf="@+id/stu_or_tea_colon" />
+
+    <EditText
+        android:id="@+id/fill_sentence"
+
+        android:layout_width="338dp"
+        android:layout_height="202dp"
+
+        android:background="@drawable/edit_text_bg"
+        android:hint="@string/fill_sentence"
+        android:inputType="text"
+
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/return_button"
+        app:layout_constraintTop_toTopOf="@+id/sentence_colon"
+        app:layout_constraintVertical_bias="0.317" />
+
+    <Button
+        android:id="@+id/sure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/button_bg"
+        android:text="@string/sure"
+
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.898"
+        app:layout_constraintWidth_percent="0.8" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

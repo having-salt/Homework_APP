@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <EditText
+    <TextView
         android:id="@+id/help_title"
 
         android:layout_width="416dp"
@@ -32,6 +32,7 @@
 
         android:paddingBottom="5dp"
         android:text="@string/help_info"
+        android:textSize="20dp"
         android:textColor="@color/white"
 
 
