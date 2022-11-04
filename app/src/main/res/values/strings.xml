@@ -30,5 +30,15 @@
     <string name="tea_sign">发起签到</string>
     <string name="edit">编辑成绩</string>
     <string name="statistics">统计成绩</string>
-    <string name="help_info">帮助</string>
+    <string name="help_info">寻求帮助</string>
+    <string name="head_colon">头像：</string>
+    <string name="name_colon">姓名：</string>
+    <string name="stu_or_tea_colon">学生/老师：</string>
+    <string name="sentence_colon">个性签名：</string>
+    <string name="fill_sentence">此处填入个性签名</string>
+    <string name="sure">确认</string>
+    <string name="stu">学生</string>
+    <string name="tea">老师</string>
+    <string name="input_name">此处输入你的姓名</string>
+    <string name="choose_photo">从相册中选择照片</string>
 </resources>
