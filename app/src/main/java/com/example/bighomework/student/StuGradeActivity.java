@@ -1,4 +1,4 @@
-package com.example.bighomework;
+package com.example.bighomework.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+
+import com.example.bighomework.R;
 
 import java.util.ArrayList;
 import java.util.List;
