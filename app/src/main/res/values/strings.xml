@@ -41,4 +41,6 @@
     <string name="tea">老师</string>
     <string name="input_name">此处输入你的姓名</string>
     <string name="choose_photo">从相册中选择照片</string>
+    <string name="input_subject">此处输入想查询的科目</string>
+    <string name="find">查询</string>
 </resources>
