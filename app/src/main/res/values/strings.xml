@@ -43,4 +43,15 @@
     <string name="choose_photo">从相册中选择照片</string>
     <string name="input_subject">此处输入想查询的科目</string>
     <string name="find">查询</string>
+    <string name="grade_manage">成绩管理</string>
+    <string name="exam_manage">考试管理</string>
+    <string name="student_manage">学生管理</string>
+    <string name="input_student">此处输入想查询的学生</string>
+    <string name="input_stu_name">此处输入姓名</string>
+    <string name="input_grade">此处输入成绩</string>
+    <string name="add">添加</string>
+    <string name="input_exam">此处输入查询的考试</string>
+    <string name="input_exam_name">此处输入考试名称</string>
+    <string name="delete">删除</string>
+    <string name="input_delete">输入要删除的名称</string>
 </resources>
