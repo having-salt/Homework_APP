@@ -13,7 +13,6 @@ import com.example.bighomework.IPSetActivity;
 import com.example.bighomework.InformationSetActivity;
 import com.example.bighomework.R;
 import com.example.bighomework.adapter.AdAdapter;
-import com.example.bighomework.student.StuMainActivity;
 
 public class TeaMainActivity extends AppCompatActivity {
 
@@ -67,6 +66,18 @@ public class TeaMainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     startActivity(new Intent(TeaMainActivity.this, HelpPageActivity.class));
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        ImageButton tea_edit = (ImageButton) findViewById(R.id.tea_edit);
+        tea_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    startActivity(new Intent(TeaMainActivity.this, TeaSubjectActivity.class));
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
