@@ -29,7 +29,7 @@ public class AdAdapter extends FragmentStateAdapter {
             case 2:
                 return new AdFragment3();
         }
-        return null;
+        return new AdFragment1();
     }
 
     @Override
