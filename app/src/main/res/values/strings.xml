@@ -54,4 +54,9 @@
     <string name="input_exam_name">此处输入考试名称</string>
     <string name="delete">删除</string>
     <string name="input_delete">输入要删除的名称</string>
+    <string name="college_colon">学院：</string>
+    <string name="choose_college">请选择你的学院</string>
+    <string name="computer_college">计算机学院</string>
+    <string name="other">其他</string>
+    <string name="environment_college">环境学院</string>
 </resources>

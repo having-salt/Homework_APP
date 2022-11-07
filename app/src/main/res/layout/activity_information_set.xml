@@ -60,6 +60,7 @@
 
     <ImageView
         android:id="@+id/iv_image"
+        android:src="@drawable/test_photo2"
         android:layout_width="95dp"
         android:layout_height="95dp"
         android:layout_marginStart="52dp"
@@ -121,13 +122,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/name_colon"
         app:layout_constraintTop_toTopOf="@id/name_colon"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintWidth_percent="0.5" />
 
     <TextView
-        android:id="@+id/stu_or_tea_colon"
+        android:id="@+id/college_colon"
 
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
 
         android:layout_marginTop="60dp"
@@ -135,7 +136,7 @@
 
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:text="@string/stu_or_tea_colon"
+        android:text="@string/college_colon"
         android:textColor="@color/pink"
 
 
@@ -143,36 +144,18 @@
         app:layout_constraintStart_toEndOf="@+id/return_button"
         app:layout_constraintTop_toTopOf="@+id/name_colon" />
 
-    <RadioGroup
-        android:id="@+id/stu_or_tea_radio"
-        android:layout_width="126dp"
+    <Spinner
+        android:id="@+id/college"
+        android:layout_width="200dp"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
 
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/stu_or_tea_colon"
+        app:layout_constraintStart_toEndOf="@+id/college_colon"
 
-        app:layout_constraintTop_toTopOf="@+id/stu_or_tea_colon">
+        app:layout_constraintTop_toTopOf="@+id/college_colon">
 
-        <RadioButton
-            android:id="@+id/stu_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/stu"
-            app:layout_constraintStart_toEndOf="@+id/stu_or_tea_colon"
-            app:layout_constraintTop_toTopOf="@+id/stu_or_tea_colon" />
-
-        <RadioButton
-            android:id="@+id/tea_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tea"
-            app:layout_constraintStart_toEndOf="@+id/stu_radio"
-            app:layout_constraintTop_toTopOf="@+id/stu_radio" />
-    </RadioGroup>
+    </Spinner>
 
     <TextView
         android:id="@+id/sentence_colon"
@@ -191,7 +174,7 @@
 
         android:textSize="25dp"
         app:layout_constraintStart_toEndOf="@+id/return_button"
-        app:layout_constraintTop_toTopOf="@+id/stu_or_tea_colon" />
+        app:layout_constraintTop_toTopOf="@+id/college_colon" />
 
     <EditText
         android:id="@+id/fill_sentence"
