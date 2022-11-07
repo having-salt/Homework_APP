@@ -10,12 +10,18 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InformationSetActivity extends AppCompatActivity {
     private Button chooseBT;
@@ -26,10 +32,21 @@ public class InformationSetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_information_set);
         Log.e(this.getClass().getName(), "onCreate");
         ImageButton returnBT = (ImageButton) findViewById(R.id.return_button);
+        Spinner collegeSpinner = (Spinner) findViewById(R.id.college);
+        collegeSpinner.setPrompt("请选择你的学院");
+        List collegeList=new ArrayList();
+        collegeList.add("计算机学院");
+        collegeList.add("环境学院");
+        collegeList.add("土木学院");
+        collegeList.add("航天学院");
+        collegeList.add("机电学院");
+        collegeList.add("其他");
+        ArrayAdapter collegeAdapter=new ArrayAdapter(this,android.R.layout.simple_spinner_item,collegeList);
+        collegeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        collegeSpinner.setAdapter(collegeAdapter);
+
         chooseBT =findViewById(R.id.chooseBT);
         iv_image =findViewById(R.id.iv_image);
-        RadioGroup stu_or_tea_radio = (RadioGroup)findViewById(R.id.stu_or_tea_radio);
-        RadioButton radioButton = (RadioButton)findViewById(stu_or_tea_radio.getCheckedRadioButtonId());
         EditText input_name=(EditText)findViewById(R.id.input_name);
         EditText fill_sentence=(EditText)findViewById(R.id.fill_sentence);
         Button sure=(Button)findViewById(R.id.sure);
@@ -49,7 +66,6 @@ public class InformationSetActivity extends AppCompatActivity {
                 try{
                     String name=input_name.getText().toString();
                     String sentence=fill_sentence.getText().toString();
-                    String stu_or_tea=radioButton.getText().toString();
 
 
 
