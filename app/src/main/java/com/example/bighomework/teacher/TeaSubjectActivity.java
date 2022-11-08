@@ -1,13 +1,16 @@
 package com.example.bighomework.teacher;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -28,6 +31,7 @@ import java.util.List;
 
 public class TeaSubjectActivity extends AppCompatActivity {
     private ListView examLV;
+    private List<String> ls = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,40 +67,10 @@ public class TeaSubjectActivity extends AppCompatActivity {
         });
 
         EditText input_exam_nameET = (EditText) findViewById(R.id.input_exam_name);
-        Button add = (Button) findViewById(R.id.add);
-
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    String input_stu_name = input_exam_nameET.getText().toString();
 
 
-                } catch (RuntimeException e) {
-                    input_exam_nameET.setText("");
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        EditText input_deleteET = (EditText) findViewById(R.id.input_delete);
-        Button deleteBT = (Button) findViewById(R.id.delete);
-
-        deleteBT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    String input_delete = input_deleteET.getText().toString();
-
-
-                } catch (RuntimeException e) {
-                    input_deleteET.setText("");
-                    e.printStackTrace();
-                }
-            }
-        });
         ListView exam_list=(ListView) findViewById(R.id.exam_list);
-        List<String> ls = new ArrayList<String>();
+
         ls.add("数据结构");
         ls.add("微积分");
         ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,ls);
@@ -105,6 +79,39 @@ public class TeaSubjectActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 startActivity(new Intent(TeaSubjectActivity.this, TeaGradeActivity.class));
+            }
+        });
+    }
+
+    public void BtnClick(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View v = inflater.inflate(R.layout.add_exam_dialog, null);
+        EditText exam_name = (EditText) v.findViewById(R.id.input_exam_name);
+        Button btn_sure = (Button) v.findViewById(R.id.dialog_btn_sure);
+        Button btn_cancel = (Button) v.findViewById(R.id.dialog_btn_cancel);
+        final Dialog dialog = builder.create();
+        dialog.show();
+        dialog.getWindow().setContentView(v);
+
+        dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+        btn_sure.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String input_name = exam_name.getText().toString();
+                dialog.dismiss();
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                dialog.dismiss();
             }
         });
     }

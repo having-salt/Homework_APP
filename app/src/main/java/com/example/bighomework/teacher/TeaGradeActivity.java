@@ -102,10 +102,9 @@ public class TeaGradeActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
                 String input_name = stu_name.getText().toString();
                 String input_grade = stu_grade.getText().toString();
-                ls.add(input_name+"："+input_grade);
+                dialog.dismiss();
             }
         });
 

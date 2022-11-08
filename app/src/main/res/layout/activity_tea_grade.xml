@@ -85,7 +85,7 @@
     <ListView
         android:id="@+id/grade_list"
         android:layout_width="0dp"
-        android:layout_height="550dp"
+        android:layout_height="500dp"
         android:divider="@color/pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

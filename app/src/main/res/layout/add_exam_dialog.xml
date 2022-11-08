@@ -16,29 +16,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="添加学生成绩"
+            android:text="添加考试"
             android:textSize="18sp" />
 
+
         <EditText
-            android:id="@+id/input_stu_name"
+            android:id="@+id/input_exam_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dialog_title"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="49dp"
             android:layout_marginRight="30dp"
-            android:text="输入学生姓名"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/input_grade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/input_stu_name"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="33dp"
-            android:layout_marginRight="30dp"
-            android:text="输入学生成绩"
+            android:text="输入考试名称"
             android:textSize="14sp" />
 
         <LinearLayout
