@@ -2,29 +2,34 @@ package com.example.bighomework.teacher;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.bighomework.R;
+import com.example.bighomework.model.Grade;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class TeaGradeActivity extends AppCompatActivity {
 
-    private ListView gradeLV;
-    private List<String> ls = new ArrayList<String>();
+    private Context mContext = TeaGradeActivity.this;
+
+    private String[] names = {"吕布","赵云","典韦","关羽","马超","张飞","黄忠","许褚","孙策","太史慈","夏侯惇","张辽","夏侯渊","张郃"};
+    private Double[] grades = {110.0,109.0,109.0,108.0,108.0,107.0,107.0,107.0,106.0,106.0,105.0,105.0,104.0,104.0};
+    private List<Grade> grade_datas = new ArrayList<>();
+    private GradeAdapter gradeAdapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,24 +67,16 @@ public class TeaGradeActivity extends AppCompatActivity {
             }
         });
 
+        initData();
+        gradeAdapter = new GradeAdapter(this,grade_datas);
+        listView.setAdapter(gradeAdapter);
+    }
 
-        ListView grade_list=(ListView) findViewById(R.id.grade_list);
-        ls.add("吕布：110");
-        ls.add("赵云：109");
-        ls.add("典韦：108");
-        ls.add("关羽：108");
-        ls.add("马超：107");
-        ls.add("张飞：107");
-        ls.add("黄忠：106");
-        ls.add("许褚：106");
-        ls.add("孙策：105");
-        ls.add("太史慈：105");
-        ls.add("夏侯惇：104");
-        ls.add("张辽：104");
-        ls.add("夏侯渊：103");
-        ls.add("张郃：103");
-        ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,ls);
-        grade_list.setAdapter(adapter);
+    private void initData() {
+        for (int i = 0; i < names.length; i++) {
+            grade_datas.add(new Grade(names[i],grades[i]));
+        }
+
     }
 
     public void BtnClick(View view) {

@@ -27,7 +27,12 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="输入学生姓名"
+            android:hint="输入学生姓名"
+            android:inputType="text"
+            android:background="@drawable/edit_text_bg"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:textSize="14sp" />
 
         <EditText
@@ -38,7 +43,12 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="33dp"
             android:layout_marginRight="30dp"
-            android:text="输入学生成绩"
+            android:hint="输入学生成绩"
+            android:inputType="text"
+            android:background="@drawable/edit_text_bg"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:textSize="14sp" />
 
         <LinearLayout
