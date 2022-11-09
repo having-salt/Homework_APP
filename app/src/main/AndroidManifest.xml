@@ -13,24 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BigHomework"
         tools:targetApi="31">
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/add_grade_dialog" />
-
-        <activity
-            android:name=".GradeItemActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ExamItemActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
             android:name=".teacher.TeaGradeActivity"
             android:exported="true">
