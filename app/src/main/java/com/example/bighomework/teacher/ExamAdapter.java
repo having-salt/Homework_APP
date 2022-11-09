@@ -2,16 +2,18 @@ package com.example.bighomework.teacher;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 
 import com.example.bighomework.R;
-import com.example.bighomework.model.Grade;
+import com.example.bighomework.model.Exam;
 
 import java.util.List;
 
@@ -20,13 +22,13 @@ import java.util.List;
  * E-Mail：543441727@qq.com
  */
 
-public class GradeAdapter extends BaseAdapter {
+public class ExamAdapter extends BaseAdapter {
 
-    private List<Grade> list;
+    private List<Exam>list;
     private Context context;
     private LayoutInflater mInflater;
 
-    public GradeAdapter(Context context, List<Grade> list) {
+    public ExamAdapter(Context context, List<Exam> list) {
         this.list = list;
         this.context = context;
         mInflater = LayoutInflater.from(this.context);
@@ -38,7 +40,7 @@ public class GradeAdapter extends BaseAdapter {
     }
 
     @Override
-    public Grade getItem(int position) {
+    public Exam getItem(int position) {
         return list.get(position);
     }
 
@@ -54,10 +56,9 @@ public class GradeAdapter extends BaseAdapter {
         View item = convertView;
         ViewHolder viewHolder;
         if (item == null) {
-            item = mInflater.inflate(R.layout.item_grade, null);
+            item = mInflater.inflate(R.layout.item_exam, null);
             viewHolder = new ViewHolder();
-            viewHolder.input_stu_name = (TextView) item.findViewById(R.id.input_stu_name);
-            viewHolder.input_stu_grade = (TextView) item.findViewById(R.id.input_stu_grade);
+            viewHolder.input_exam_name = (TextView) item.findViewById(R.id.input_exam_name);
             viewHolder.delete = (ImageButton) item.findViewById(R.id.delete);
             item.setTag(viewHolder);
 
@@ -65,12 +66,11 @@ public class GradeAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) item.getTag();
         }
         try {
-            if (!list.get(position).getStuName().equals("")) {
-                viewHolder.input_stu_name.setText(list.get(position).getStuName());
+            if (!list.get(position).getExamName().equals("")) {
+                viewHolder.input_exam_name.setText(list.get(position).getExamName());
             } else {
-                viewHolder.input_stu_name.setText("姓名不详");
+                viewHolder.input_exam_name.setText("考试不详");
             }
-            viewHolder.input_stu_grade.setText(String.valueOf(list.get(position).getGrade()));
             viewHolder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -91,8 +91,7 @@ public class GradeAdapter extends BaseAdapter {
     }
 
     public final class ViewHolder {
-        public TextView input_stu_name;
-        public TextView input_stu_grade;
+        public TextView input_exam_name;
         public ImageButton delete;
     }
 }

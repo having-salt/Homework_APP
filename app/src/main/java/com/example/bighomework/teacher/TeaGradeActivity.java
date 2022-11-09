@@ -36,7 +36,7 @@ public class TeaGradeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea_grade);
         ImageButton returnBT = (ImageButton) findViewById(R.id.return_button);
-
+        listView = (ListView) findViewById(R.id.grade_list);
         returnBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

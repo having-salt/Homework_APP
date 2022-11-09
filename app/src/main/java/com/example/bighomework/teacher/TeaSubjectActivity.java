@@ -23,6 +23,8 @@ import android.widget.TextView;
 
 import com.example.bighomework.LoginActivity;
 import com.example.bighomework.R;
+import com.example.bighomework.model.Exam;
+import com.example.bighomework.model.Grade;
 import com.example.bighomework.student.StuMainActivity;
 
 import java.util.ArrayList;
@@ -30,14 +32,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TeaSubjectActivity extends AppCompatActivity {
-    private ListView examLV;
-    private List<String> ls = new ArrayList<String>();
+    private List<Exam> ls = new ArrayList<Exam>();
+    private String exams[] ={"微积分","数据结构","移动互联网","软件构造","大学物理"};
+    private ListView listView;
+    private ExamAdapter examAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea_subject);
         ImageButton returnBT = (ImageButton) findViewById(R.id.return_button);
-
+        listView = (ListView) findViewById(R.id.exam_list);
+        initData();
         returnBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,21 +71,26 @@ public class TeaSubjectActivity extends AppCompatActivity {
             }
         });
 
-        EditText input_exam_nameET = (EditText) findViewById(R.id.input_exam_name);
 
 
-        ListView exam_list=(ListView) findViewById(R.id.exam_list);
+        examAdapter = new ExamAdapter(this,ls);
 
-        ls.add("数据结构");
-        ls.add("微积分");
-        ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,ls);
-        exam_list.setAdapter(adapter);
-        exam_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 startActivity(new Intent(TeaSubjectActivity.this, TeaGradeActivity.class));
             }
         });
+        listView.setAdapter(examAdapter);
+    }
+
+    private void initData() {
+        for (int i = 0; i < exams.length; i++) {
+            ls.add(new Exam(exams[i]));
+        }
+    }
+    public void jumpClick(View view){
+            startActivity(new Intent(TeaSubjectActivity.this, TeaGradeActivity.class));
     }
 
     public void BtnClick(View view) {
