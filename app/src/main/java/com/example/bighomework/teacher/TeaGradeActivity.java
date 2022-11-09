@@ -56,10 +56,6 @@ public class TeaGradeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     String input_student = input_studentET.getText().toString();
-
-
-
-
                 } catch (RuntimeException e) {
                     input_studentET.setText("");
                     e.printStackTrace();
