@@ -40,9 +40,10 @@
     <com.example.bighomework.teacher.PieView
         android:id="@+id/pieView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_gravity="center"
+        android:layout_marginTop="150dp"
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/count_exam"/>
+        app:layout_constraintTop_toBottomOf="@+id/count_exam" />
 </androidx.constraintlayout.widget.ConstraintLayout>
