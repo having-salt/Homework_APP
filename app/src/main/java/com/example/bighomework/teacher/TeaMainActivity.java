@@ -83,5 +83,17 @@ public class TeaMainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ImageButton tea_statistics = (ImageButton) findViewById(R.id.tea_statistics);
+        tea_statistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    startActivity(new Intent(TeaMainActivity.this, CountExam.class));
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

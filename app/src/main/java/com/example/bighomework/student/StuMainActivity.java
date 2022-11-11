@@ -91,5 +91,17 @@ public class StuMainActivity extends FragmentActivity {
                 }
             }
         });
+
+        ImageButton stu_gpa = (ImageButton) findViewById(R.id.stu_gpa);
+        stu_gpa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    startActivity(new Intent(StuMainActivity.this, CreditPie.class));
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
