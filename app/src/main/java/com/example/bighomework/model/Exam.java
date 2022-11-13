@@ -5,15 +5,16 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Exam {
-    private String ExamName;
+    private String examName;
     private List<Grade> gradeList;
 
     public Exam(String examName) {
-        ExamName = examName;
+        examName = examName;
+        gradeList = new ArrayList<>();
     }
 
     public String getExamName() {
-        return ExamName;
+        return examName;
     }
 
     public List<Grade> getGradeList() {
@@ -21,7 +22,7 @@ public class Exam {
     }
 
     public void setExamName(String examName) {
-        ExamName = examName;
+        examName = examName;
     }
     public boolean addGrade(Grade g){
         Iterator<Grade> it = gradeList.iterator();
