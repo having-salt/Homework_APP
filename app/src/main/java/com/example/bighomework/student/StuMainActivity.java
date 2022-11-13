@@ -21,6 +21,7 @@ import com.example.bighomework.service.LoginService;
 import com.example.bighomework.teacher.TeaMainActivity;
 
 public class StuMainActivity extends FragmentActivity {
+    private String account;
     private ViewPager2 adVP;
     private static final int NUM_PAGES = 3;
     private AdAdapter adPagerAdapter;
@@ -28,6 +29,7 @@ public class StuMainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        account = getIntent().getStringExtra("account");
         setContentView(R.layout.activity_main_stu);
         adVP = findViewById(R.id.stu_ad_ViewPager);
         adVP.setAdapter(new AdAdapter(this));

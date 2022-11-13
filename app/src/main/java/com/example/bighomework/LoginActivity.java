@@ -33,9 +33,13 @@ public class LoginActivity extends AppCompatActivity {
 
                     boolean isTea = new LoginService().isTeacher(account);
                     if(isTea){
-                        startActivity(new Intent(LoginActivity.this, TeaMainActivity.class));
+                        Intent intent = new Intent(LoginActivity.this, TeaMainActivity.class);
+                        intent.putExtra("account",account);
+                        startActivity(intent);
                     }else{
-                        startActivity(new Intent(LoginActivity.this, StuMainActivity.class));
+                        Intent intent = new Intent(LoginActivity.this, StuMainActivity.class);
+                        intent.putExtra("account",account);
+                        startActivity(intent);
                     }
                 } catch (RuntimeException e) {
                     accountET.setText("");

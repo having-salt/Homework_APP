@@ -17,9 +17,11 @@ import com.example.bighomework.adapter.AdAdapter;
 public class TeaMainActivity extends AppCompatActivity {
 
     private ViewPager2 adVP;
+    private String account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        account = getIntent().getStringExtra("account");
         setContentView(R.layout.activity_main_tea);
         adVP = findViewById(R.id.tea_ad_ViewPager);
         adVP.setAdapter(new AdAdapter(this));
