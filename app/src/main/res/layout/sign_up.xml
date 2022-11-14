@@ -1,99 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <EditText
-        android:id="@+id/account"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-        android:hint="@string/account_hint"
-        android:inputType="text"
+<EditText
+    android:id="@+id/login_account"
 
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    android:hint="@string/account_hint"
+    android:inputType="text"
 
-        android:background="@drawable/edit_text_bg"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text_bg"
 
-        app:layout_constraintWidth_percent="0.8"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintWidth_percent="0.8"
+    app:layout_constraintVertical_bias="0.3"
+    app:layout_constraintHorizontal_bias="0.5"
 
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+    android:paddingLeft="20dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-    <EditText
-        android:id="@+id/password"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+<EditText
+    android:id="@+id/login_password"
 
-        android:hint="@string/password"
-        android:inputType="textPassword"
+    android:hint="@string/password"
+    android:inputType="textPassword"
 
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text_bg"
 
-        app:layout_constraintWidth_percent="0.8"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintWidth_percent="0.8"
+    app:layout_constraintVertical_bias="0"
+    app:layout_constraintHorizontal_bias="0.5"
 
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+    android:paddingLeft="20dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/account"
-        android:layout_marginTop="10dp"
-        />
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/login_account"
+    android:layout_marginTop="10dp"
+    />
 
-    <EditText
-        android:id="@+id/sure_password"
+<EditText
+    android:id="@+id/sure_password"
 
-        android:hint="@string/sure_password"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
 
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/edit_text_bg"
+    android:hint="@string/sure_password"
 
-        app:layout_constraintWidth_percent="0.8"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:background="@drawable/edit_text_bg"
+    android:inputType="textPassword"
+    android:paddingLeft="20dp"
 
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        android:layout_marginTop="10dp"
-        />
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/login_account"
+    app:layout_constraintVertical_bias="0.128"
+    app:layout_constraintWidth_percent="0.8" />
 
-    <Button
-        android:id="@+id/sign_up"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+<Button
+    android:id="@+id/sign_up"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
 
-        android:text = "@string/sign_up"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:background="@drawable/button_bg"
-        android:textColor="@color/white"
+    android:background="@drawable/button_bg"
+    android:text="@string/sign_up"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    android:textColor="@color/white"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintWidth_percent="0.8"
-        app:layout_constraintVertical_bias="0.6"
-        />
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.701"
+    app:layout_constraintWidth_percent="0.8" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
