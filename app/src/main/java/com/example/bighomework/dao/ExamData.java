@@ -85,7 +85,6 @@ public class ExamData {
     public void addGrade(String examName, Grade grade)throws Exception{
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        String url = "jdbc:mysql://localhost:3306/exam";
         Connection conn = DriverManager.getConnection(url, username, password);
         System.out.println(conn);
 
