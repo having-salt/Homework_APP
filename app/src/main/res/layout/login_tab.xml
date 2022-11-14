@@ -100,10 +100,29 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias="1"
 
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="14dp"
         android:layout_marginRight="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login_password"
+        app:layout_constraintBottom_toBottomOf="@+id/is_remember"
+        app:layout_constraintTop_toTopOf="@+id/is_remember"/>
+    <CheckBox
+        android:id="@+id/is_remember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="记住密码"
+        android:textColor="@color/darkGray"
+
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="5dp"
+
+        app:layout_constraintStart_toStartOf="@+id/login_password"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
