@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ExamData {
     private String username = "root";
@@ -31,6 +33,9 @@ public class ExamData {
         List<Exam> exams= new ArrayList<>();
         while (rs.next()){
             String examName = rs.getString(1);
+            if(examName.equals("teacher")){
+                continue;
+            }
             Exam exam = new Exam(examName);
             exams.add(exam);
             String sql2 = "select * from "+examName;
@@ -47,8 +52,26 @@ public class ExamData {
         conn.close();
         return new ArrayList<>(exams);
     }
+    public Map<String,String> getExamToTea() throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
-    public void addExam(String examName)throws Exception{
+        String url = "jdbc:mysql://localhost:3306/exam";
+        Connection conn = DriverManager.getConnection(url, username, password);
+        System.out.println(conn);
+
+        String sql = "select * from teacher;";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+
+        Map<String,String> map = new HashMap<>();
+        while(rs.next()){
+            map.put(rs.getString("examName"),rs.getString("teaName"));
+        }
+        pstm.close();
+        conn.close();
+        return new HashMap<>(map);
+    }
+    public void addExam(String examName,String teaName)throws Exception{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, username, password);
             // url错误创建链接时会出现异常
@@ -62,8 +85,14 @@ public class ExamData {
             System.out.println(update);
             // 5.（如果是查询语句，需要处理结果集）
             // 6.关闭资源
+            String sql2 = String.format("insert into teacher values ('%s','%s');",teaName,examName);
+            PreparedStatement pstm2 = conn.prepareStatement(sql2);
+            // 4.发送执行SQL
+            int update2 = pstm2.executeUpdate();
+            System.out.println(update2);
             pstm.close();
             conn.close();
+
     }
     public void deleteExam(String examName) throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
