@@ -87,14 +87,14 @@ public class CreditPie extends AppCompatActivity {
         float e=0;
         double sum=0.0;
         for(int i=0;i<grade.size();i++){
-            sum=sum+grade.indexOf(i);
-            if(0.0<=grade.indexOf(i)&&grade.indexOf(i)<60.0){
+            sum=sum+grade.get(i);
+            if(0.0<=grade.get(i)&&grade.get(i)<60.0){
                 a+=1.0;
-            }else if(60.0<=grade.indexOf(i)&&grade.indexOf(i)<70.0){
+            }else if(60.0<=grade.get(i)&&grade.get(i)<70.0){
                 b+=1.0;
-            }else if(70.0<=grade.indexOf(i)&&grade.indexOf(i)<80.0){
+            }else if(70.0<=grade.get(i)&&grade.get(i)<80.0){
                 c+=1.0;
-            }else if(80.0<=grade.indexOf(i)&&grade.indexOf(i)<90.0){
+            }else if(80.0<=grade.get(i)&&grade.get(i)<90.0){
                 d+=1.0;
             }else {
                 e+=1.0;

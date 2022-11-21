@@ -25,6 +25,7 @@ public class StuGradeActivity extends AppCompatActivity {
     private ExamData ED=new ExamData();
     private String account;
     private String name;
+    private List<String> ls3 = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,10 @@ public class StuGradeActivity extends AppCompatActivity {
         EditText input_subjectET = (EditText)findViewById(R.id.input_subject);
         Button find = (Button) findViewById(R.id.find);
         ListView subject_list=(ListView) findViewById(R.id.subject_list);
+
+
+
+        init(ls3);
 
         account = getIntent().getStringExtra("account");
         try {
@@ -58,18 +63,44 @@ public class StuGradeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     String input_subject = input_subjectET.getText().toString();
-
-
-
-
+                    if(input_subject.equals("")){
+                        init(ls3);
+                    }else{
+                        ls3=null;
+                        List<Exam> ls = new ArrayList<Exam>();
+                        try {
+                            ls=ED.getAllExams();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Iterator<Exam> t=ls.iterator();
+                        while(t.hasNext()) {
+                            Exam s=t.next();
+                            if(s.getExamName().equals(input_subject)) {
+                                List<Grade> ls2;
+                                ls2=s.getGradeList();
+                                Iterator<Grade> t2=ls2.iterator();
+                                while(t2.hasNext()){
+                                    Grade s2=t2.next();
+                                    if(s2.getStuName().equals(name)){
+                                        ls3.add(s.getExamName()+"："+s2.getGrade());
+                                    }
+                                }
+                            }
+                        }
+                    }
                 } catch (RuntimeException e) {
                     input_subjectET.setText("");
                     e.printStackTrace();
                 }
             }
         });
+        ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,ls3);
+        subject_list.setAdapter(adapter);
+    }
+
+    private void init(List<String> ls3){
         List<Exam> ls = new ArrayList<Exam>();
-        List<String> ls3 = new ArrayList<String>();
         try {
             ls=ED.getAllExams();
         } catch (Exception e) {
@@ -88,7 +119,5 @@ public class StuGradeActivity extends AppCompatActivity {
                 }
             }
         }
-        ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,ls3);
-        subject_list.setAdapter(adapter);
     }
 }

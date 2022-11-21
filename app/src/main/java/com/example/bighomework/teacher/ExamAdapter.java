@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 
 import com.example.bighomework.R;
+import com.example.bighomework.dao.ExamData;
 import com.example.bighomework.model.Exam;
 
 import java.util.List;
@@ -27,10 +28,13 @@ public class ExamAdapter extends BaseAdapter {
     private List<Exam>list;
     private Context context;
     private LayoutInflater mInflater;
+    private String account;
+    private ExamData ED=new ExamData();
 
-    public ExamAdapter(Context context, List<Exam> list) {
+    public ExamAdapter(Context context, List<Exam> list,String account) {
         this.list = list;
         this.context = context;
+        this.account=account;
         mInflater = LayoutInflater.from(this.context);
     }
 
@@ -71,15 +75,27 @@ public class ExamAdapter extends BaseAdapter {
             } else {
                 viewHolder.input_exam_name.setText("考试不详");
             }
+            viewHolder.input_exam_name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try{
+                        Intent intent=new Intent(view.getContext(), TeaGradeActivity.class);
+                        intent.putExtra("exam",list.get(position).getExamName());
+                        intent.putExtra("account",account);
+                        view.getContext().startActivity(intent);
+                    } catch (RuntimeException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
             viewHolder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try{
-
-
-
-
+                        ED.deleteExam(list.get(position).getExamName());
                     } catch (RuntimeException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }

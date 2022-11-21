@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 
 import com.example.bighomework.R;
+import com.example.bighomework.dao.ExamData;
 import com.example.bighomework.model.Grade;
 
 import java.util.List;
@@ -25,10 +26,13 @@ public class GradeAdapter extends BaseAdapter {
     private List<Grade> list;
     private Context context;
     private LayoutInflater mInflater;
+    private ExamData ED=new ExamData();
+    private String exam;
 
-    public GradeAdapter(Context context, List<Grade> list) {
+    public GradeAdapter(Context context, List<Grade> list,String exam) {
         this.list = list;
         this.context = context;
+        this.exam = exam;
         mInflater = LayoutInflater.from(this.context);
     }
 
@@ -75,11 +79,10 @@ public class GradeAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     try{
-
-
-
-
+                        ED.deleteGrade(exam,list.get(position).getStuName());
                     } catch (RuntimeException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
