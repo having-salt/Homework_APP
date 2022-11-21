@@ -43,17 +43,14 @@ public class AccountData {
     public void deleteAccount(String account)throws Exception{
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        // url错误创建链接时会出现异常
-        // 参数错误不会导致运行时异常
         System.out.println(conn);
 
         String sql = String.format("delete from account where account = '%s';",account);
         PreparedStatement pstm = conn.prepareStatement(sql);
-        // 4.发送执行SQL
+
         int update = pstm.executeUpdate();
         System.out.println(update);
-        // 5.（如果是查询语句，需要处理结果集）
-        // 6.关闭资源
+
         pstm.close();
         conn.close();
     }

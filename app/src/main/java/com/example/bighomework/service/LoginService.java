@@ -1,8 +1,10 @@
 package com.example.bighomework.service;
 
+import android.content.SharedPreferences;
+
 import java.util.regex.Pattern;
 
-public class LoginService {
+public class LoginService{
     public boolean isTeacher(String account) throws RuntimeException{
         String pattern = "(stu.+)|(tea.+)";
         boolean isMatch = Pattern.matches(pattern, account);
