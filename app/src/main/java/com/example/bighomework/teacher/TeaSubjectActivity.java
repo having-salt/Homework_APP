@@ -23,6 +23,8 @@ import android.widget.TextView;
 
 import com.example.bighomework.LoginActivity;
 import com.example.bighomework.R;
+import com.example.bighomework.dao.AccountData;
+import com.example.bighomework.dao.ExamData;
 import com.example.bighomework.model.Exam;
 import com.example.bighomework.model.Grade;
 import com.example.bighomework.student.StuMainActivity;
@@ -36,12 +38,24 @@ public class TeaSubjectActivity extends AppCompatActivity {
     private String exams[] ={"微积分","数据结构","移动互联网","软件构造","大学物理"};
     private ListView listView;
     private ExamAdapter examAdapter;
+    private AccountData AD=new AccountData();
+    private ExamData ED=new ExamData();
+    private String account;
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea_subject);
         ImageButton returnBT = (ImageButton) findViewById(R.id.return_button);
         listView = (ListView) findViewById(R.id.exam_list);
+
+        account = getIntent().getStringExtra("account");
+        try {
+            name = AD.getNameByAccount(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         initData();
         returnBT.setOnClickListener(new View.OnClickListener() {
             @Override

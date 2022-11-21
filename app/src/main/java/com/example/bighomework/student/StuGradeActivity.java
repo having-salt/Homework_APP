@@ -11,12 +11,20 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.bighomework.R;
+import com.example.bighomework.dao.AccountData;
+import com.example.bighomework.dao.ExamData;
+import com.example.bighomework.model.Exam;
+import com.example.bighomework.model.Grade;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class StuGradeActivity extends AppCompatActivity {
-
+    private AccountData AD=new AccountData();
+    private ExamData ED=new ExamData();
+    private String account;
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +35,12 @@ public class StuGradeActivity extends AppCompatActivity {
         Button find = (Button) findViewById(R.id.find);
         ListView subject_list=(ListView) findViewById(R.id.subject_list);
 
+        account = getIntent().getStringExtra("account");
+        try {
+            name = AD.getNameByAccount(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         returnBT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,11 +68,27 @@ public class StuGradeActivity extends AppCompatActivity {
                 }
             }
         });
-
-        List<String> ls = new ArrayList<String>();
-        ls.add("数据结构：93");
-        ls.add("微积分： 95");
-        ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,ls);
+        List<Exam> ls = new ArrayList<Exam>();
+        List<String> ls3 = new ArrayList<String>();
+        try {
+            ls=ED.getAllExams();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Iterator<Exam> t=ls.iterator();
+        while(t.hasNext()) {
+            Exam s=t.next();
+            List<Grade> ls2;
+            ls2=s.getGradeList();
+            Iterator<Grade> t2=ls2.iterator();
+            while(t2.hasNext()){
+                Grade s2=t2.next();
+                if(s2.getStuName().equals(name)){
+                    ls3.add(s.getExamName()+"："+s2.getGrade());
+                }
+            }
+        }
+        ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,ls3);
         subject_list.setAdapter(adapter);
     }
 }

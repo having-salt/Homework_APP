@@ -82,101 +82,37 @@
         app:layout_constraintVertical_bias="0.084"
         app:layout_constraintWidth_percent="0.18" />
 
-    <EditText
-        android:id="@+id/input_exam_name"
 
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:background="@drawable/edit_text_bg"
-        android:hint="@string/input_exam_name"
-        android:inputType="text"
-
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_exam"
-        app:layout_constraintVertical_bias="0.023"
-        app:layout_constraintWidth_percent="0.6" />
-
-
-
-    <Button
-        android:id="@+id/add"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:background="@drawable/button_bg"
-        android:text="@string/add"
-
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toEndOf="@id/input_exam_name"
-        app:layout_constraintTop_toBottomOf="@id/find"
-        app:layout_constraintVertical_bias="0.008"
-        app:layout_constraintWidth_percent="0.18" />
-    <EditText
-        android:id="@+id/input_delete"
-
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:background="@drawable/edit_text_bg"
-        android:hint="@string/input_delete"
-        android:inputType="text"
-
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_exam_name"
-        app:layout_constraintVertical_bias="0.027"
-        app:layout_constraintWidth_percent="0.6" />
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:background="@drawable/button_bg"
-        android:text="@string/delete"
-
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.953"
-        app:layout_constraintStart_toEndOf="@id/input_delete"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253"
-        app:layout_constraintWidth_percent="0.18" />
     <ListView
         android:id="@+id/exam_list"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
         android:divider="@color/pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_delete"
+        app:layout_constraintTop_toBottomOf="@id/find"
         app:layout_constraintVertical_bias="0.05" />
+
+    <ImageButton
+        android:id="@+id/add"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:src="@drawable/add"
+        android:background="@color/white"
+        android:scaleType="fitXY"
+        android:textColor="@color/white"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:onClick="BtnClick"
+
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exam_list"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
