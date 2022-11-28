@@ -34,8 +34,8 @@ public class SignUpActivity extends AppCompatActivity {
                         if(isTea){
                             AD.addAccount(account,"tea",password,null,"","");
                         }else{
-                        }
                             AD.addAccount(account,"stu",password,null,"","");
+                        }
                     }
 
                 } catch (RuntimeException e) {
