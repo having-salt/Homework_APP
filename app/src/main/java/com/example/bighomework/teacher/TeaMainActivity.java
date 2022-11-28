@@ -13,6 +13,8 @@ import com.example.bighomework.IPSetActivity;
 import com.example.bighomework.InformationSetActivity;
 import com.example.bighomework.R;
 import com.example.bighomework.adapter.AdAdapter;
+import com.example.bighomework.student.StuGradeActivity;
+import com.example.bighomework.student.StuMainActivity;
 
 public class TeaMainActivity extends AppCompatActivity {
 
@@ -43,7 +45,9 @@ public class TeaMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(TeaMainActivity.this, IPSetActivity.class));
+                    Intent intent=new Intent(TeaMainActivity.this, IPSetActivity.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
@@ -55,7 +59,9 @@ public class TeaMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(TeaMainActivity.this, InformationSetActivity.class));
+                    Intent intent=new Intent(TeaMainActivity.this, InformationSetActivity.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
@@ -67,7 +73,9 @@ public class TeaMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(TeaMainActivity.this, HelpPageActivity.class));
+                    Intent intent=new Intent(TeaMainActivity.this, HelpPageActivity.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
@@ -79,7 +87,9 @@ public class TeaMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(TeaMainActivity.this, TeaSubjectActivity.class));
+                    Intent intent=new Intent(TeaMainActivity.this, TeaSubjectActivity.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
@@ -91,7 +101,9 @@ public class TeaMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(TeaMainActivity.this, CountExam.class));
+                    Intent intent=new Intent(TeaMainActivity.this, CountExam.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }

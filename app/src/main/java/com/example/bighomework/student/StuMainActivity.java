@@ -39,7 +39,9 @@ public class StuMainActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(StuMainActivity.this, StuGradeActivity.class));
+                    Intent intent=new Intent(StuMainActivity.this, StuGradeActivity.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
@@ -63,7 +65,9 @@ public class StuMainActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(StuMainActivity.this, IPSetActivity.class));
+                    Intent intent=new Intent(StuMainActivity.this, IPSetActivity.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
@@ -75,7 +79,9 @@ public class StuMainActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(StuMainActivity.this, InformationSetActivity.class));
+                    Intent intent=new Intent(StuMainActivity.this, InformationSetActivity.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
@@ -87,7 +93,9 @@ public class StuMainActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(StuMainActivity.this, HelpPageActivity.class));
+                    Intent intent=new Intent(StuMainActivity.this, HelpPageActivity.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
@@ -99,7 +107,9 @@ public class StuMainActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    startActivity(new Intent(StuMainActivity.this, CreditPie.class));
+                    Intent intent=new Intent(StuMainActivity.this, CreditPie.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }

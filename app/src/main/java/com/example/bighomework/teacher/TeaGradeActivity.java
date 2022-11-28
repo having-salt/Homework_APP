@@ -15,21 +15,30 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.bighomework.R;
+import com.example.bighomework.dao.AccountData;
+import com.example.bighomework.dao.ExamData;
+import com.example.bighomework.model.Exam;
 import com.example.bighomework.model.Grade;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class TeaGradeActivity extends AppCompatActivity {
 
     private Context mContext = TeaGradeActivity.this;
 
-    private String[] names = {"吕布","赵云","典韦","关羽","马超","张飞","黄忠","许褚","孙策","太史慈","夏侯惇","张辽","夏侯渊","张郃"};
-    private Double[] grades = {110.0,109.0,109.0,108.0,108.0,107.0,107.0,107.0,106.0,106.0,105.0,105.0,104.0,104.0};
+    String[] names;
+    Double[] grades;
     private List<Grade> grade_datas = new ArrayList<>();
     private GradeAdapter gradeAdapter;
     private ListView listView;
+    private AccountData AD=new AccountData();
+    private ExamData ED=new ExamData();
+    private String account;
+    private String name;
+    private String exam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,25 +46,69 @@ public class TeaGradeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tea_grade);
         ImageButton returnBT = (ImageButton) findViewById(R.id.return_button);
         listView = (ListView) findViewById(R.id.grade_list);
-        returnBT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try{
-                    finish();
-                } catch (RuntimeException e) {
-                    e.printStackTrace();
+
+        account = getIntent().getStringExtra("account");
+        exam = getIntent().getStringExtra("exam");
+        try {
+            name = AD.getNameByAccount(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        List<String> stu_name = null;
+        List<Double> grade_name = null;
+        List<Exam> exams = null;
+        List<Grade> grade = null;
+        try {
+            exams = ED.getAllExams();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < exams.size();i++){
+            if(exams.get(i).getExamName().equals(exam)){
+                grade=exams.get(i).getGradeList();
+                for(int j=0;j<grade.size();j++){
+                    stu_name.add(grade.get(j).getStuName());
+                    grade_name.add(grade.get(j).getGrade());
                 }
             }
-        });
+        }
+        for(int i=0;i<grade.size();i++){
+            names[i]=stu_name.get(i);
+            grades[i]=grade_name.get(i);
+        }
+        initData(grade_datas);
 
-        EditText input_studentET = (EditText)findViewById(R.id.input_student);
+            returnBT.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        finish();
+                    } catch (RuntimeException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        EditText input_studentET = (EditText) findViewById(R.id.input_student);
         Button find = (Button) findViewById(R.id.find);
 
         find.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
+                try {
                     String input_student = input_studentET.getText().toString();
+                    if(input_student.equals("")){
+                        initData(grade_datas);
+                    }else{
+                        for(int i=0;i<grade_datas.size();i++){
+                            if(grade_datas.get(i).getStuName().equals(input_student)){
+                                double x=grade_datas.get(i).getGrade();
+                                grade_datas=null;
+                                grade_datas.add(new Grade(input_student,x));
+                                break;
+                            }
+                        }
+                    }
                 } catch (RuntimeException e) {
                     input_studentET.setText("");
                     e.printStackTrace();
@@ -63,12 +116,12 @@ public class TeaGradeActivity extends AppCompatActivity {
             }
         });
 
-        initData();
-        gradeAdapter = new GradeAdapter(this,grade_datas);
+
+        gradeAdapter = new GradeAdapter(this, grade_datas,exam);
         listView.setAdapter(gradeAdapter);
     }
 
-    private void initData() {
+    private void initData(List<Grade> grade_datas) {
         for (int i = 0; i < names.length; i++) {
             grade_datas.add(new Grade(names[i],grades[i]));
         }
@@ -97,6 +150,11 @@ public class TeaGradeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String input_name = stu_name.getText().toString();
                 String input_grade = stu_grade.getText().toString();
+                try {
+                    ED.addGrade(exam,new Grade(input_name,Double.parseDouble(input_grade)));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 dialog.dismiss();
             }
         });

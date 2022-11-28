@@ -23,25 +23,56 @@ import android.widget.TextView;
 
 import com.example.bighomework.LoginActivity;
 import com.example.bighomework.R;
+import com.example.bighomework.dao.AccountData;
+import com.example.bighomework.dao.ExamData;
 import com.example.bighomework.model.Exam;
 import com.example.bighomework.model.Grade;
+import com.example.bighomework.student.StuGradeActivity;
 import com.example.bighomework.student.StuMainActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TeaSubjectActivity extends AppCompatActivity {
     private List<Exam> ls = new ArrayList<Exam>();
-    private String exams[] ={"微积分","数据结构","移动互联网","软件构造","大学物理"};
+    private String exams[];
     private ListView listView;
     private ExamAdapter examAdapter;
+    private AccountData AD=new AccountData();
+    private ExamData ED=new ExamData();
+    private String account;
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea_subject);
         ImageButton returnBT = (ImageButton) findViewById(R.id.return_button);
         listView = (ListView) findViewById(R.id.exam_list);
+
+        account = getIntent().getStringExtra("account");
+        try {
+            name = AD.getNameByAccount(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Map<String, String> exam_to_name = null;
+        try {
+            exam_to_name = ED.getExamToTea();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        List<String> exam_name=null;
+        for (String key : exam_to_name.keySet()) {
+            if(key.equals(name)){
+                exam_name.add(exam_to_name.get(key));
+            }
+        }
+        for(int i=0;i<exam_name.size();i++){
+            exams[i]=exam_name.get(i);
+        }
+
         initData();
         returnBT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +93,17 @@ public class TeaSubjectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     String input_student = input_examET.getText().toString();
-
+                    if(input_student.equals("")){
+                        initData();
+                    }else{
+                        for(int i=0;i<ls.size();i++){
+                            if(ls.get(i).getExamName().equals(input_student)){
+                                ls=null;
+                                ls.add(new Exam(input_student));
+                                break;
+                            }
+                        }
+                    }
 
                 } catch (RuntimeException e) {
                     input_examET.setText("");
@@ -72,15 +113,7 @@ public class TeaSubjectActivity extends AppCompatActivity {
         });
 
 
-
-        examAdapter = new ExamAdapter(this,ls);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(TeaSubjectActivity.this, TeaGradeActivity.class));
-            }
-        });
+        examAdapter = new ExamAdapter(this, ls,account);
         listView.setAdapter(examAdapter);
     }
 
@@ -88,9 +121,6 @@ public class TeaSubjectActivity extends AppCompatActivity {
         for (int i = 0; i < exams.length; i++) {
             ls.add(new Exam(exams[i]));
         }
-    }
-    public void jumpClick(View view){
-            startActivity(new Intent(TeaSubjectActivity.this, TeaGradeActivity.class));
     }
 
     public void BtnClick(View view) {
@@ -113,6 +143,11 @@ public class TeaSubjectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String input_name = exam_name.getText().toString();
+                try {
+                    ED.addExam(input_name,name);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 dialog.dismiss();
             }
         });
