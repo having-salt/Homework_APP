@@ -20,7 +20,7 @@ public class AccountData {
         }
     }
 
-    public void addAccount(String account, String type, String password, String name)throws Exception{
+    public void addAccount(String account, String type, String password, String name,String sentence,String school)throws Exception{
         if(getNameByAccount(account)!=null){
             throw new RuntimeException("该账号已存在");
         }

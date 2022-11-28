@@ -32,10 +32,10 @@ public class SignUpActivity extends AppCompatActivity {
                         String password = passwordET.getText().toString();
                         boolean isTea = new LoginService().isTeacher(account);
                         if(isTea){
-                            AD.addAccount(account,"tea",password,null);
+                            AD.addAccount(account,"tea",password,null,"","");
                         }else{
                         }
-                            AD.addAccount(account,"stu",password,null);
+                            AD.addAccount(account,"stu",password,null,"","");
                     }
 
                 } catch (RuntimeException e) {

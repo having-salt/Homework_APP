@@ -8,6 +8,6 @@ public class AccountDataTest {
     @Test
     public void AccountTest()throws Exception{
         AccountData ad = new AccountData();
-        ad.addAccount("stu123","Student","123","小米");
+        ad.addAccount("stu123","Student","123","小米","有志者 事竟成","软件学院");
     }
 }

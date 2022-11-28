@@ -1,7 +1,5 @@
 package com.example.bighomework.service;
 
-import android.content.SharedPreferences;
-
 import java.util.regex.Pattern;
 
 public class LoginService{
