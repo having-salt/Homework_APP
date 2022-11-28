@@ -4,20 +4,18 @@ import com.example.bighomework.model.Exam;
 import com.example.bighomework.model.Grade;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ExamData {
-    private String username = "root";
-    private String password = "123456";
-    private String url = "jdbc:mysql://localhost:3306/exam";
+    private final String username = "root";
+    private final String password = "123456";
+    private final String url = "jdbc:mysql://localhost:3306/exam";
 
     public List<Exam> getAllExams() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
