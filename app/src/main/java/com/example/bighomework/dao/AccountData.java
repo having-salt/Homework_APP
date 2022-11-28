@@ -30,7 +30,7 @@ public class AccountData {
         // 参数错误不会导致运行时异常
         System.out.println(conn);
 
-        String sql = String.format("insert into account values('%s','%s','%s','%s');",account,type,password,name);
+        String sql = String.format("insert into account values('%s','%s','%s','%s','%s','%s');",account,type,password,name,sentence,school);
         PreparedStatement pstm = conn.prepareStatement(sql);
         // 4.发送执行SQL
         int update = pstm.executeUpdate();
@@ -67,5 +67,30 @@ public class AccountData {
         }
         return null;
     }
+    public String getSentenceByAccount(String account)throws Exception{
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
+        System.out.println(conn);
+
+        String sql = String.format("select * from account where account = '%s';",account);
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        while(rs.next()){
+            return rs.getString("sentence");
+        }
+        return null;
+    }
+    public String getSchoolByAccount(String account)throws Exception{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        System.out.println(conn);
+
+        String sql = String.format("select * from account where account = '%s';",account);
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        while(rs.next()){
+            return rs.getString("school");
+        }
+        return null;
+    }
 }
