@@ -1,5 +1,7 @@
 package com.example.bighomework.dao;
 
+import com.example.bighomework.setting.IPSetting;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,13 +9,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountData {
-    private String username = "root";
-    private String password = "123456";
-    private String url = "jdbc:mysql://localhost:3306/information";
+    private String username;
+    private String password;
+    private String url;
     private Connection conn;
 
     public AccountData(){
         try{
+            username = IPSetting.username;
+            password = IPSetting.password;
+            url = String.format("jdbc:mysql://%s:%s/information",IPSetting.IP,IPSetting.port);
             conn = DriverManager.getConnection(url, username, password);
         }catch (SQLException e){
             e.printStackTrace();
