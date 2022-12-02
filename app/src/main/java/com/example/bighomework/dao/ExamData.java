@@ -18,22 +18,20 @@ public class ExamData {
     private String username;
     private String password;
     private String url;
-    private Connection conn=null;
     public ExamData(){
         try{
             username = IPSetting.username;
             password = IPSetting.password;
             url = String.format("jdbc:mysql://%s:%s/exam",IPSetting.IP,IPSetting.port);
             System.out.println(String.format("%s,%s,%s",url,username,password));
-            conn = DriverManager.getConnection(url, username, password);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     public List<Exam> getAllExams() throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, password);
         String url = "jdbc:mysql://localhost:3306/exam";
          
         System.out.println(conn);
@@ -61,12 +59,12 @@ public class ExamData {
         }
 
         pstm.close();
-         
+        conn.close();
         return new ArrayList<>(exams);
     }
     public Map<String,String> getExamToTea() throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, password);
         String url = "jdbc:mysql://localhost:3306/exam";
          
         System.out.println(conn);
@@ -80,35 +78,34 @@ public class ExamData {
             map.put(rs.getString("examName"),rs.getString("teaName"));
         }
         pstm.close();
-         
+        conn.close();
         return new HashMap<>(map);
     }
     public void addExam(String examName,String teaName)throws Exception{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-             
-            // url错误创建链接时会出现异常
-            // 参数错误不会导致运行时异常
-            System.out.println(conn);
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, password);
+        // url错误创建链接时会出现异常
+        // 参数错误不会导致运行时异常
+        System.out.println(conn);
 
-            String sql = "create table " + " if not exists "+ examName +" (stuName varchar(255), grade float);";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            // 4.发送执行SQL
-            int update = pstm.executeUpdate();
-            System.out.println(update);
-            // 5.（如果是查询语句，需要处理结果集）
-            // 6.关闭资源
-            String sql2 = String.format("insert into teacher values ('%s','%s');",teaName,examName);
-            PreparedStatement pstm2 = conn.prepareStatement(sql2);
-            // 4.发送执行SQL
-            int update2 = pstm2.executeUpdate();
-            System.out.println(update2);
-            pstm.close();
-             
-
+        String sql = "create table " + " if not exists "+ examName +" (stuName varchar(255), grade float);";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        // 4.发送执行SQL
+        int update = pstm.executeUpdate();
+        System.out.println(update);
+        // 5.（如果是查询语句，需要处理结果集）
+        // 6.关闭资源
+        String sql2 = String.format("insert into teacher values ('%s','%s');",teaName,examName);
+        PreparedStatement pstm2 = conn.prepareStatement(sql2);
+        // 4.发送执行SQL
+        int update2 = pstm2.executeUpdate();
+        System.out.println(update2);
+        pstm.close();
+        conn.close();
     }
     public void deleteExam(String examName) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-         
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, password);
         // url错误创建链接时会出现异常
         // 参数错误不会导致运行时异常
         System.out.println(conn);
@@ -121,11 +118,11 @@ public class ExamData {
         // 5.（如果是查询语句，需要处理结果集）
         // 6.关闭资源
         pstm.close();
-         
+        conn.close();
     }
     public void addGrade(String examName, Grade grade)throws Exception{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, password);
          
         System.out.println(conn);
 
@@ -150,11 +147,12 @@ public class ExamData {
 
         pstm1.close();
         pstm2.close();
+        conn.close();
          
     }
     public void deleteGrade(String examName,String stuName)throws Exception{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, password);
         String url = "jdbc:mysql://localhost:3306/exam";
          
         System.out.println(conn);
@@ -180,6 +178,6 @@ public class ExamData {
 
         pstm1.close();
         pstm2.close();
-         
+        conn.close();
     }
 }

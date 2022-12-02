@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp">
         <ImageView
-            android:id="@+id/photo"
+            android:id="@+id/tea_photo"
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
@@ -33,7 +33,7 @@
             android:text="姓名：XXX"
             android:textColor="@color/coral"
 
-            app:layout_constraintStart_toEndOf="@+id/photo"
+            app:layout_constraintStart_toEndOf="@+id/tea_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -49,7 +49,7 @@
             android:text="所在学院：XXXXXX"
             android:textColor="@color/coral"
 
-            app:layout_constraintStart_toEndOf="@+id/photo"
+            app:layout_constraintStart_toEndOf="@+id/tea_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tea_name"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -65,7 +65,7 @@
             android:text="座右铭：有志者，事竟成"
             android:textColor="@color/coral"
 
-            app:layout_constraintStart_toEndOf="@+id/photo"
+            app:layout_constraintStart_toEndOf="@+id/tea_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tea_college"
             app:layout_constraintBottom_toBottomOf="parent"/>

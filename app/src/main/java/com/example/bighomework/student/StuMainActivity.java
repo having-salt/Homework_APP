@@ -1,6 +1,7 @@
 package com.example.bighomework.student;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -10,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.bighomework.HelpPageActivity;
 import com.example.bighomework.IPSetActivity;
@@ -17,6 +20,7 @@ import com.example.bighomework.InformationSetActivity;
 import com.example.bighomework.LoginActivity;
 import com.example.bighomework.R;
 import com.example.bighomework.adapter.AdAdapter;
+import com.example.bighomework.dao.AccountData;
 import com.example.bighomework.service.LoginService;
 import com.example.bighomework.teacher.TeaMainActivity;
 
@@ -25,6 +29,7 @@ public class StuMainActivity extends FragmentActivity {
     private ViewPager2 adVP;
     private static final int NUM_PAGES = 3;
     private AdAdapter adPagerAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,5 +120,22 @@ public class StuMainActivity extends FragmentActivity {
                 }
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ImageView iv = findViewById(R.id.stu_photo);
+        iv.setImageResource(R.drawable.photo);
+        TextView name = findViewById(R.id.stu_name);
+        TextView school = findViewById(R.id.stu_college);
+        TextView sentence = findViewById(R.id.stu_sentence);
+        AccountData ad = new AccountData();
+        try {
+            name.setText(String.format("姓名： %s",ad.getNameByAccount(account)));
+            school.setText(String.format("所在学院： %s",ad.getSchoolByAccount(account)));
+            sentence.setText(String.format("座右铭： %s",ad.getSentenceByAccount(account)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
