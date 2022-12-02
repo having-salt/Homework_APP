@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.bighomework.dao.AccountData;
 import com.example.bighomework.service.LoginService;
 import com.example.bighomework.student.StuMainActivity;
 import com.example.bighomework.teacher.TeaMainActivity;
@@ -19,6 +21,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_tab);
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }//强制在主线程请求http
+
         EditText accountET = (EditText)findViewById(R.id.login_account);
         EditText passwordET = (EditText)findViewById(R.id.login_password);
 
@@ -30,7 +37,11 @@ public class LoginActivity extends AppCompatActivity {
                 try{
                     String account = accountET.getText().toString();
                     String password = passwordET.getText().toString();
-
+//                    if(!new AccountData().isCorrect(account,password)){
+//                        accountET.setText("");
+//                        passwordET.setText("");
+//                        return;
+//                    }
                     boolean isTea = new LoginService().isTeacher(account);
                     Intent intent;
                     if(isTea){
@@ -43,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (RuntimeException e) {
                     accountET.setText("");
                     passwordET.setText("");
+                    e.printStackTrace();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

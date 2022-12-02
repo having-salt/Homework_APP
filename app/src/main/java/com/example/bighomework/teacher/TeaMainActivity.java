@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -13,6 +15,7 @@ import com.example.bighomework.IPSetActivity;
 import com.example.bighomework.InformationSetActivity;
 import com.example.bighomework.R;
 import com.example.bighomework.adapter.AdAdapter;
+import com.example.bighomework.dao.AccountData;
 import com.example.bighomework.student.StuGradeActivity;
 import com.example.bighomework.student.StuMainActivity;
 
@@ -109,5 +112,22 @@ public class TeaMainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ImageView iv = findViewById(R.id.tea_photo);
+        iv.setImageResource(R.drawable.photo);
+        TextView name = findViewById(R.id.tea_name);
+        TextView school = findViewById(R.id.tea_college);
+        TextView sentence = findViewById(R.id.tea_sentence);
+        AccountData ad = new AccountData();
+        try {
+            name.setText(String.format("姓名： %s",ad.getNameByAccount(account)));
+            school.setText(String.format("所在学院： %s",ad.getSchoolByAccount(account)));
+            sentence.setText(String.format("座右铭： %s",ad.getSentenceByAccount(account)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
