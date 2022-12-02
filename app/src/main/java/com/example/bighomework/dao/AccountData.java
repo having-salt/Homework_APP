@@ -165,4 +165,19 @@ public class AccountData {
         conn.close();
         return null;
     }
+    public String getPasswordByAccount(String account)throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, sql_password);
+        System.out.println(conn);
+
+        String sql = String.format("select * from account where account = '%s';",account);
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        while(rs.next()){
+            return rs.getString("password");
+        }
+        pstm.close();
+        conn.close();
+        return null;
+    }
 }
