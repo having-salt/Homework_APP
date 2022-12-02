@@ -23,6 +23,10 @@ public class TeaMainActivity extends AppCompatActivity {
 
     private ViewPager2 adVP;
     private String account;
+    private AccountData AD=new AccountData();
+    private String name;
+    private String school;
+    private String sentence;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,21 @@ public class TeaMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_tea);
         adVP = findViewById(R.id.tea_ad_ViewPager);
         adVP.setAdapter(new AdAdapter(this));
+
+        try {
+            name=AD.getNameByAccount(account);
+            school=AD.getSchoolByAccount(account);
+            sentence=AD.getSentenceByAccount(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        TextView tea_name = (TextView) findViewById(R.id.tea_name);
+        TextView tea_college = (TextView) findViewById(R.id.tea_college);
+        TextView tea_sentence = (TextView) findViewById(R.id.tea_sentence);
+        tea_name.setText("姓名："+name);
+        tea_college.setText("所在学院："+school);
+        tea_sentence.setText("座右铭："+sentence);
 
         ImageButton tea_out = (ImageButton) findViewById(R.id.tea_out);
         tea_out.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +82,9 @@ public class TeaMainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     Intent intent=new Intent(TeaMainActivity.this, InformationSetActivity.class);
+                    String type = "tea";
                     intent.putExtra("account",account);
+                    intent.putExtra("type",type);
                     startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
@@ -112,6 +133,14 @@ public class TeaMainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ImageView tea_photo = (ImageView) findViewById(R.id.tea_photo);
+        try {
+            AD.downloadImg(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tea_photo.setImageResource(R.drawable.photo);
     }
     @Override
     protected void onStart() {
