@@ -2,26 +2,40 @@ package com.example.bighomework.dao;
 
 import com.example.bighomework.model.Exam;
 import com.example.bighomework.model.Grade;
+import com.example.bighomework.setting.IPSetting;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ExamData {
-    private final String username = "root";
-    private final String password = "123456";
-    private final String url = "jdbc:mysql://localhost:3306/exam";
+    private String username;
+    private String password;
+    private String url;
+    private Connection conn=null;
+    public ExamData(){
+        try{
+            username = IPSetting.username;
+            password = IPSetting.password;
+            url = String.format("jdbc:mysql://%s:%s/exam",IPSetting.IP,IPSetting.port);
+            System.out.println(String.format("%s,%s,%s",url,username,password));
+            conn = DriverManager.getConnection(url, username, password);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public List<Exam> getAllExams() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         String url = "jdbc:mysql://localhost:3306/exam";
-        Connection conn = DriverManager.getConnection(url, username, password);
+         
         System.out.println(conn);
 
         String sql = "show tables;";
@@ -47,14 +61,14 @@ public class ExamData {
         }
 
         pstm.close();
-        conn.close();
+         
         return new ArrayList<>(exams);
     }
     public Map<String,String> getExamToTea() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         String url = "jdbc:mysql://localhost:3306/exam";
-        Connection conn = DriverManager.getConnection(url, username, password);
+         
         System.out.println(conn);
 
         String sql = "select * from teacher;";
@@ -66,12 +80,12 @@ public class ExamData {
             map.put(rs.getString("examName"),rs.getString("teaName"));
         }
         pstm.close();
-        conn.close();
+         
         return new HashMap<>(map);
     }
     public void addExam(String examName,String teaName)throws Exception{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, username, password);
+             
             // url错误创建链接时会出现异常
             // 参数错误不会导致运行时异常
             System.out.println(conn);
@@ -89,12 +103,12 @@ public class ExamData {
             int update2 = pstm2.executeUpdate();
             System.out.println(update2);
             pstm.close();
-            conn.close();
+             
 
     }
     public void deleteExam(String examName) throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(url, username, password);
+         
         // url错误创建链接时会出现异常
         // 参数错误不会导致运行时异常
         System.out.println(conn);
@@ -107,12 +121,12 @@ public class ExamData {
         // 5.（如果是查询语句，需要处理结果集）
         // 6.关闭资源
         pstm.close();
-        conn.close();
+         
     }
     public void addGrade(String examName, Grade grade)throws Exception{
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        Connection conn = DriverManager.getConnection(url, username, password);
+         
         System.out.println(conn);
 
         String sql1 = "show tables;";
@@ -136,13 +150,13 @@ public class ExamData {
 
         pstm1.close();
         pstm2.close();
-        conn.close();
+         
     }
     public void deleteGrade(String examName,String stuName)throws Exception{
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         String url = "jdbc:mysql://localhost:3306/exam";
-        Connection conn = DriverManager.getConnection(url, username, password);
+         
         System.out.println(conn);
 
         String sql1 = "show tables;";
@@ -166,6 +180,6 @@ public class ExamData {
 
         pstm1.close();
         pstm2.close();
-        conn.close();
+         
     }
 }
