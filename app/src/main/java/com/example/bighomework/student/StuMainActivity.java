@@ -29,7 +29,10 @@ public class StuMainActivity extends FragmentActivity {
     private ViewPager2 adVP;
     private static final int NUM_PAGES = 3;
     private AdAdapter adPagerAdapter;
-
+    private AccountData AD=new AccountData();
+    private String name;
+    private String school;
+    private String sentence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,21 @@ public class StuMainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main_stu);
         adVP = findViewById(R.id.stu_ad_ViewPager);
         adVP.setAdapter(new AdAdapter(this));
+
+        try {
+            name=AD.getNameByAccount(account);
+            school=AD.getSchoolByAccount(account);
+            sentence=AD.getSentenceByAccount(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        TextView stu_name = (TextView) findViewById(R.id.stu_name);
+        TextView stu_college = (TextView) findViewById(R.id.stu_college);
+        TextView stu_sentence = (TextView) findViewById(R.id.stu_sentence);
+        stu_name.setText("姓名："+name);
+        stu_college.setText("所在学院："+school);
+        stu_sentence.setText("座右铭："+sentence);
 
         ImageButton stu_find = (ImageButton) findViewById(R.id.stu_find);
         stu_find.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +102,10 @@ public class StuMainActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 try{
+                    String type = "stu";
                     Intent intent=new Intent(StuMainActivity.this, InformationSetActivity.class);
                     intent.putExtra("account",account);
+                    intent.putExtra("type",type);
                     startActivity(intent);
                 } catch (RuntimeException e) {
                     e.printStackTrace();
@@ -120,6 +140,16 @@ public class StuMainActivity extends FragmentActivity {
                 }
             }
         });
+
+        ImageView stu_photo = (ImageView) findViewById(R.id.stu_photo);
+        try {
+            AD.downloadImg(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        stu_photo.setImageResource(R.drawable.photo);
+
+
     }
     @Override
     protected void onStart() {
