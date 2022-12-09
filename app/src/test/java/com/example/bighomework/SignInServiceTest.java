@@ -12,15 +12,15 @@ public class SignInServiceTest {
     @Test
     public void SignInTest() throws IOException {
         SignInService service = new SignInService();
-        service.addSign("Test2",100);
-        service.signIn("Test2","木头","stu124");
+//        service.addSign("Test2",100);
+        service.signIn("haha","木头","stu124");
         List<Sign> list1 = service.getAllSigns();
-        List<String> list2 = service.getResult("Test2");
+//        List<String> list2 = service.getResult("Test2");
         for(Sign s:list1){
             System.out.println(s.toString());
         }
-        for(String s:list2){
-            System.out.println(s);
-        }
+//        for(String s:list2){
+//            System.out.println(s);
+//        }
     }
 }

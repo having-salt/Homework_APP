@@ -36,6 +36,7 @@ public class CheckAdapter extends BaseAdapter {
         this.context = context;
         this.account=account;
         mInflater = LayoutInflater.from(this.context);
+        AD = new AccountData();
     }
 
     @Override
