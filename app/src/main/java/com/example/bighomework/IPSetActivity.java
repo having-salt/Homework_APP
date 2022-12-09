@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.bighomework.service.LoginService;
+import com.example.bighomework.setting.IPSetting;
 import com.example.bighomework.student.StuMainActivity;
 import com.example.bighomework.teacher.TeaMainActivity;
 
@@ -44,10 +45,8 @@ public class IPSetActivity extends AppCompatActivity {
                 try{
                     String service_IP = IP_serET.getText().toString();
                     String service_port = ser_portET.getText().toString();
-
-
-
-
+                    IPSetting.setIP(service_IP);
+                    IPSetting.setPort(service_port);
                 } catch (RuntimeException e) {
                     IP_serET.setText("");
                     ser_portET.setText("");

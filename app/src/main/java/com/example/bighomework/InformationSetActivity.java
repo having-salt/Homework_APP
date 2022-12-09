@@ -66,7 +66,7 @@ public class InformationSetActivity extends AppCompatActivity {
         collegeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         collegeSpinner.setAdapter(collegeAdapter);
 
-        String new_school=collegeSpinner.getSelectedItem().toString();
+
 
         chooseBT =findViewById(R.id.chooseBT);
         iv_image =findViewById(R.id.iv_image);
@@ -88,11 +88,12 @@ public class InformationSetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
+                    String new_school=collegeSpinner.getSelectedItem().toString();
                     AD.deleteAccount(account);
                     String new_name=input_name.getText().toString();
                     String new_sentence=fill_sentence.getText().toString();
                     AD.addAccount(account,type,password,new_name,new_sentence,new_school);
-
+                    finish();
 
                 } catch (RuntimeException e) {
                     e.printStackTrace();

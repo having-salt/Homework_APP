@@ -3,6 +3,7 @@ package com.example.bighomework.student;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -100,6 +101,12 @@ public class StuGradeActivity extends AppCompatActivity {
     }
 
     private void init(List<String> ls3){
+        account = getIntent().getStringExtra("account");
+        try {
+            name = AD.getNameByAccount(account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         List<Exam> ls = new ArrayList<Exam>();
         try {
             ls=ED.getAllExams();
@@ -109,6 +116,7 @@ public class StuGradeActivity extends AppCompatActivity {
         Iterator<Exam> t=ls.iterator();
         while(t.hasNext()) {
             Exam s=t.next();
+            Log.d("tag","exam:"+s.getExamName()+" name:"+name);
             List<Grade> ls2;
             ls2=s.getGradeList();
             Iterator<Grade> t2=ls2.iterator();

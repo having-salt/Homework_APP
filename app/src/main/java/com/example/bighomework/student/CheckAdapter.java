@@ -1,4 +1,4 @@
-package com.example.bighomework.teacher;
+package com.example.bighomework.student;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,26 +9,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 
 import com.example.bighomework.R;
+import com.example.bighomework.dao.AccountData;
 import com.example.bighomework.dao.ExamData;
 import com.example.bighomework.model.Exam;
+import com.example.bighomework.service.SignInService;
 
 import java.util.List;
 
 
-public class ExamAdapter extends BaseAdapter {
+public class CheckAdapter extends BaseAdapter {
 
-    private List<Exam>list;
+    private List<String>list;
     private Context context;
     private LayoutInflater mInflater;
     private String account;
-    private ExamData ED=new ExamData();
+    private AccountData AD;
 
-    public ExamAdapter(Context context, List<Exam> list,String account) {
+    public CheckAdapter(Context context, List<String> list,String account) {
         this.list = list;
         this.context = context;
         this.account=account;
@@ -41,7 +44,7 @@ public class ExamAdapter extends BaseAdapter {
     }
 
     @Override
-    public Exam getItem(int position) {
+    public String getItem(int position) {
         return list.get(position);
     }
 
@@ -57,39 +60,35 @@ public class ExamAdapter extends BaseAdapter {
         View item = convertView;
         ViewHolder viewHolder;
         if (item == null) {
-            item = mInflater.inflate(R.layout.item_exam, null);
+            item = mInflater.inflate(R.layout.item_check, null);
             viewHolder = new ViewHolder();
-            viewHolder.input_exam_name = (TextView) item.findViewById(R.id.input_exam_name);
-            viewHolder.delete = (ImageButton) item.findViewById(R.id.delete);
+            viewHolder.input_check_name = (TextView) item.findViewById(R.id.input_check_name);
+            viewHolder.check = (Button) item.findViewById(R.id.check);
             item.setTag(viewHolder);
 
         } else {
             viewHolder = (ViewHolder) item.getTag();
         }
         try {
-            if (!list.get(position).getExamName().equals("")) {
-                viewHolder.input_exam_name.setText(list.get(position).getExamName());
+            Log.d("tag","1."+list.get(position));
+            Log.d("tag","2."+AD.getNameByAccount(account));
+            Log.d("tag","3."+account);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+
+            if (!list.get(position).equals("")) {
+                viewHolder.input_check_name.setText(list.get(position));
             } else {
-                viewHolder.input_exam_name.setText("考试不详");
+                viewHolder.input_check_name.setText("签到不详");
             }
-            viewHolder.input_exam_name.setOnClickListener(new View.OnClickListener() {
+            viewHolder.check.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try{
-                        Intent intent=new Intent(view.getContext(), TeaGradeActivity.class);
-                        intent.putExtra("exam",list.get(position).getExamName());
-                        intent.putExtra("account",account);
-                        view.getContext().startActivity(intent);
-                    } catch (RuntimeException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            viewHolder.delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    try{
-                        ED.deleteExam(list.get(position).getExamName());
+                        Log.d("tag",list.get(position)+AD.getNameByAccount(account)+account);
+                        SignInService.signIn(list.get(position),AD.getNameByAccount(account),account);
                     } catch (RuntimeException e) {
                         e.printStackTrace();
                     } catch (Exception e) {
@@ -104,7 +103,7 @@ public class ExamAdapter extends BaseAdapter {
     }
 
     public final class ViewHolder {
-        public TextView input_exam_name;
-        public ImageButton delete;
+        public TextView input_check_name;
+        public Button check;
     }
 }

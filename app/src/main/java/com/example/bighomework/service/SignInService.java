@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 public class SignInService {
-    public void addSign(String signName,long limit) throws IOException {
+    public static void addSign(String signName, long limit) throws IOException {
         System.out.println("等待连接服务端！");
         Socket socket = new Socket(IPSetting.IP, Integer.parseInt(IPSetting.sign_port));
         System.out.println("连接服务端成功！");
@@ -24,7 +24,7 @@ public class SignInService {
         OutputStream outputStream = socket.getOutputStream();
         outputStream.write(s.getBytes(StandardCharsets.UTF_8));
     }
-    public void signIn(String signName,String stuName,String stuAccount) throws IOException{
+    public static void signIn(String signName, String stuName, String stuAccount) throws IOException{
         System.out.println("等待连接服务端！");
         Socket socket = new Socket(IPSetting.IP, Integer.parseInt(IPSetting.sign_port));
         System.out.println("连接服务端成功！");
@@ -33,7 +33,7 @@ public class SignInService {
         OutputStream outputStream = socket.getOutputStream();
         outputStream.write(s.getBytes(StandardCharsets.UTF_8));
     }
-    public List<Sign> getAllSigns() throws IOException {
+    public static List<Sign> getAllSigns() throws IOException {
         System.out.println("等待连接服务端！");
         Socket socket = new Socket(IPSetting.IP, Integer.parseInt(IPSetting.sign_port));
         System.out.println("连接服务端成功！");
@@ -55,7 +55,7 @@ public class SignInService {
         }
         return list;
     }
-    public List<String> getResult(String signName) throws IOException{
+    public static List<String> getResult(String signName) throws IOException{
         System.out.println("等待连接服务端！");
         Socket socket = new Socket(IPSetting.IP, Integer.parseInt(IPSetting.sign_port));
         System.out.println("连接服务端成功！");
