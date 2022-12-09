@@ -4,31 +4,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
-
-import com.example.bighomework.LoginActivity;
 import com.example.bighomework.R;
 import com.example.bighomework.dao.AccountData;
 import com.example.bighomework.dao.ExamData;
 import com.example.bighomework.model.Exam;
-import com.example.bighomework.model.Grade;
-import com.example.bighomework.student.StuGradeActivity;
-import com.example.bighomework.student.StuMainActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,8 +26,8 @@ import java.util.Map;
 
 public class TeaSubjectActivity extends AppCompatActivity {
     private List<Exam> ls = new ArrayList<Exam>();
-    private String exams[];
-    private ListView listView;
+    private List<String> exam_name=new ArrayList<>();
+    private Map<String, String> exam_to_name =new HashMap<>();
     private ExamAdapter examAdapter;
     private AccountData AD=new AccountData();
     private ExamData ED=new ExamData();
@@ -49,7 +38,7 @@ public class TeaSubjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea_subject);
         ImageButton returnBT = (ImageButton) findViewById(R.id.return_button);
-        listView = (ListView) findViewById(R.id.exam_list);
+        ListView listView = (ListView) findViewById(R.id.exam_list);
 
         account = getIntent().getStringExtra("account");
         try {
@@ -57,20 +46,15 @@ public class TeaSubjectActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Map<String, String> exam_to_name = null;
         try {
             exam_to_name = ED.getExamToTea();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        List<String> exam_name=null;
         for (String key : exam_to_name.keySet()) {
-            if(key.equals(name)){
-                exam_name.add(exam_to_name.get(key));
+            if(exam_to_name.get(key).equals(name)){
+                exam_name.add(key);
             }
-        }
-        for(int i=0;i<exam_name.size();i++){
-            exams[i]=exam_name.get(i);
         }
 
         initData();
@@ -118,8 +102,9 @@ public class TeaSubjectActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        for (int i = 0; i < exams.length; i++) {
-            ls.add(new Exam(exams[i]));
+        for (int i = 0; i < exam_name.size(); i++) {
+            Exam ex = new Exam(exam_name.get(i));
+            ls.add(ex);
         }
     }
 

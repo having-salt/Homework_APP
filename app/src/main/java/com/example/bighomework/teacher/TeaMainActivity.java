@@ -134,6 +134,20 @@ public class TeaMainActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton tea_start_sign = (ImageButton) findViewById(R.id.tea_start_sign);
+        tea_start_sign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    Intent intent=new Intent(TeaMainActivity.this, TeaCheck.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         ImageView tea_photo = (ImageView) findViewById(R.id.tea_photo);
         try {
             AD.downloadImg(account);

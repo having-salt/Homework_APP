@@ -67,6 +67,11 @@ public class GradePie extends AppCompatActivity {
                         e+=1.0;
                     }
                 }
+                a=100*a/grades.size();
+                b=100*b/grades.size();
+                c=100*c/grades.size();
+                d=100*d/grades.size();
+                e=100*e/grades.size();
             }
         }
 

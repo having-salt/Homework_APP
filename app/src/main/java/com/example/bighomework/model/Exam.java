@@ -8,8 +8,8 @@ public class Exam {
     private String examName;
     private List<Grade> gradeList;
 
-    public Exam(String examName) {
-        examName = examName;
+    public Exam(String exam_name) {
+        examName = exam_name;
         gradeList = new ArrayList<>();
     }
 

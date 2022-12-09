@@ -22,6 +22,7 @@ import com.example.bighomework.R;
 import com.example.bighomework.adapter.AdAdapter;
 import com.example.bighomework.dao.AccountData;
 import com.example.bighomework.service.LoginService;
+import com.example.bighomework.teacher.CountExam;
 import com.example.bighomework.teacher.TeaMainActivity;
 
 public class StuMainActivity extends FragmentActivity {
@@ -133,6 +134,20 @@ public class StuMainActivity extends FragmentActivity {
             public void onClick(View view) {
                 try{
                     Intent intent=new Intent(StuMainActivity.this, CreditPie.class);
+                    intent.putExtra("account",account);
+                    startActivity(intent);
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        ImageButton stu_sign = (ImageButton) findViewById(R.id.stu_sign);
+        stu_sign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    Intent intent=new Intent(StuMainActivity.this, StuCheck.class);
                     intent.putExtra("account",account);
                     startActivity(intent);
                 } catch (RuntimeException e) {

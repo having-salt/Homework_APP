@@ -78,12 +78,12 @@
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/stu_ad_ViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridLayout
         android:layout_width="match_parent"

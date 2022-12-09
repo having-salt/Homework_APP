@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -28,10 +29,9 @@ import java.util.Map;
 public class TeaGradeActivity extends AppCompatActivity {
 
     private Context mContext = TeaGradeActivity.this;
-
-    String[] names;
-    Double[] grades;
     private List<Grade> grade_datas = new ArrayList<>();
+    private List<String> stu_name = new ArrayList<>();
+    private List<Double> grade_name = new ArrayList<>();
     private GradeAdapter gradeAdapter;
     private ListView listView;
     private AccountData AD=new AccountData();
@@ -54,8 +54,6 @@ public class TeaGradeActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        List<String> stu_name = null;
-        List<Double> grade_name = null;
         List<Exam> exams = null;
         List<Grade> grade = null;
         try {
@@ -71,10 +69,6 @@ public class TeaGradeActivity extends AppCompatActivity {
                     grade_name.add(grade.get(j).getGrade());
                 }
             }
-        }
-        for(int i=0;i<grade.size();i++){
-            names[i]=stu_name.get(i);
-            grades[i]=grade_name.get(i);
         }
         initData(grade_datas);
 
@@ -122,8 +116,9 @@ public class TeaGradeActivity extends AppCompatActivity {
     }
 
     private void initData(List<Grade> grade_datas) {
-        for (int i = 0; i < names.length; i++) {
-            grade_datas.add(new Grade(names[i],grades[i]));
+        for (int i = 0; i < stu_name.size(); i++) {
+            Log.d("tag","have_grade"+"."+stu_name.get(i)+"+"+grade_name.get(i));
+            grade_datas.add(new Grade(stu_name.get(i),grade_name.get(i)));
         }
 
     }
