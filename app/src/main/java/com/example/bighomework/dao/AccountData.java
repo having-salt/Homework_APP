@@ -1,5 +1,7 @@
 package com.example.bighomework.dao;
 
+import android.util.Log;
+
 import com.example.bighomework.service.LoginService;
 import com.example.bighomework.setting.IPSetting;
 
@@ -128,6 +130,7 @@ public class AccountData {
         String sql = String.format("select * from account where account = '%s';",account);
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
+        Log.d("tag",account);
         while(rs.next()){
             return rs.getString("name");
         }
