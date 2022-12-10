@@ -1,8 +1,7 @@
-package com.example.bighomework.student;
+package com.example.bighomework.teacher;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,48 +9,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-import androidx.appcompat.app.AlertDialog;
 
 import com.example.bighomework.R;
-import com.example.bighomework.dao.AccountData;
 import com.example.bighomework.dao.ExamData;
 import com.example.bighomework.model.Exam;
-import com.example.bighomework.service.SignInService;
 
 import java.util.List;
 
 
-public class CheckAdapter extends BaseAdapter {
+public class TeaCheckAdapter extends BaseAdapter {
 
-    private List<String>list;
+    private List<String>list1;
+    private List<String>list2;
     private Context context;
     private LayoutInflater mInflater;
     private String account;
-    private AccountData AD;
-    private SignInService signInService = new SignInService();
+    private ExamData ED=new ExamData();
 
-    public CheckAdapter(Context context, List<String> list,String account) {
-        this.list = list;
+    public TeaCheckAdapter(Context context, List<String> list1,List<String> list2,String account) {
+        this.list1 = list1;
+        this.list2 = list2;
         this.context = context;
         this.account=account;
         mInflater = LayoutInflater.from(this.context);
-        AD = new AccountData();
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return list1.size();
     }
 
     @Override
     public String getItem(int position) {
-        return list.get(position);
+        return list1.get(position);
     }
 
     @Override
@@ -66,30 +59,35 @@ public class CheckAdapter extends BaseAdapter {
         View item = convertView;
         ViewHolder viewHolder;
         if (item == null) {
-            item = mInflater.inflate(R.layout.item_check, null);
+            item = mInflater.inflate(R.layout.item_tea_check,null);
             viewHolder = new ViewHolder();
-            viewHolder.input_check_name = (TextView) item.findViewById(R.id.input_check_name);
-            viewHolder.check = (Button) item.findViewById(R.id.check);
+            viewHolder.name = (TextView) item.findViewById(R.id.name);
+            viewHolder.time = (TextView) item.findViewById(R.id.time);
             item.setTag(viewHolder);
 
         } else {
             viewHolder = (ViewHolder) item.getTag();
         }
         try {
-
-            if (!list.get(position).equals("")) {
-                viewHolder.input_check_name.setText(list.get(position));
+            if (!list1.get(position).equals("")) {
+                viewHolder.name.setText(list1.get(position));
             } else {
-                viewHolder.input_check_name.setText("签到不详");
+                viewHolder.name.setText("签到不详");
             }
-            viewHolder.check.setOnClickListener(new View.OnClickListener() {
+            if (!list2.get(position).equals("")) {
+                viewHolder.time.setText(list2.get(position));
+            } else {
+                viewHolder.time.setText("时间不详");
+            }
+            viewHolder.name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try{
-                        signInService.signIn(list.get(position),AD.getNameByAccount(account),account);
-
-                        Toast.makeText(context.getApplicationContext(), "签到成功", Toast.LENGTH_SHORT).show();
-                    } catch (Exception e) {
+                        Intent intent=new Intent(view.getContext(), HaveCheck.class);
+                        intent.putExtra("sign",list1.get(position));
+                        intent.putExtra("account",account);
+                        view.getContext().startActivity(intent);
+                    } catch (RuntimeException e) {
                         e.printStackTrace();
                     }
                 }
@@ -101,7 +99,7 @@ public class CheckAdapter extends BaseAdapter {
     }
 
     public final class ViewHolder {
-        public TextView input_check_name;
-        public Button check;
+        public TextView name;
+        public TextView time;
     }
 }

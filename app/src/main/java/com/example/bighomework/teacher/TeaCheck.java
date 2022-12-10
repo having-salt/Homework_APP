@@ -29,7 +29,10 @@ import java.util.List;
 public class TeaCheck extends AppCompatActivity {
     private List<Sign> sign_list = new ArrayList<>();
     private List<String> sign_name_list = new ArrayList<>();
+    private List<String> sign_time_list = new ArrayList<>();
     private String account;
+    private SignInService signInService = new SignInService();
+    private TeaCheckAdapter teaCheckAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,27 +52,17 @@ public class TeaCheck extends AppCompatActivity {
         });
 
         try {
-            sign_list = SignInService.getAllSigns();
+            sign_list = signInService.getAllSigns();
         } catch (IOException e) {
             e.printStackTrace();
         }
         for(int i=0;i<sign_list.size();i++){
             sign_name_list.add(sign_list.get(i).getSignName());
+            sign_time_list.add(sign_list.get(i).getTime());
         }
 
-
-
-        listView.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,sign_name_list));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,long  id) {
-                String check_name=sign_name_list.get(position);
-                Intent intent=new Intent(TeaCheck.this, HaveCheck.class);
-                intent.putExtra("account",account);
-                intent.putExtra("sign",sign_name_list.get(position));
-                startActivity(intent);
-            }
-        });
+        teaCheckAdapter = new TeaCheckAdapter(this, sign_name_list,sign_time_list,account);
+        listView.setAdapter(teaCheckAdapter);
     }
 
     public void BtnClick(View view) {
