@@ -22,6 +22,7 @@ public class HaveCheck extends AppCompatActivity {
     private List<String> stu_name = new ArrayList<>();
     private String account;
     private String sign;
+    private SignInService signInService=new SignInService();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class HaveCheck extends AppCompatActivity {
             }
         });
         try {
-            stu_name = SignInService.getResult(sign);
+            stu_name = signInService.getResult(sign);
         } catch (IOException e) {
             e.printStackTrace();
         }
